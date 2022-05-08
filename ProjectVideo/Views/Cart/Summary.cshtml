@@ -1,0 +1,98 @@
+﻿ @model ProjectVideo.Models.ViewsModels.ProductUserVM
+
+
+ 
+<form method="post">
+    <br />
+    <div class="backgroundBorder">
+        <div class="container row">
+            <div class="col-8">
+                <div class="card mt-4">
+                    <div class="card-header bg-dark ml-0 row container" style="color:white;">
+                        <div class="col-6">
+                            <i class="fa fa-shopping-cart"></i> Shopping Cart
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-action="Index" asp-controller="Home" class="btn btn-outline-info btn-sm">
+                                Order  Shopping
+                            </a>
+                        </div>
+                     </div>
+                     <div class="card-body">
+                          <div class="container rounded p-2">
+                              <div class="row">
+                                <div class="col-12 col-lg-7 pb-4">
+                                    <div class="row">
+                                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="text-info">PicUp Details</span>
+                                        </h4>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.FullName" type="text" class="form-control" />
+                                            <span asp-validation-for="ApplicationUser.FullName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                     <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>Phone</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.PhoneNumber"  type="text" class="form-control" />
+                                            <span  asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                     <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>E-mail</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.Email"  type="text" class="form-control" />
+                                            <span  asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-5 row">
+                                    <div class="col-12">
+                                         <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="text-info">Summary</span>
+                                        </h4>
+                                        <ul class="list-group mb-3">
+                                           @* @{
+                                                double @total = 0;
+                                            }*@
+
+                                            @foreach(var pro in Model.ProductList){
+                                                @*@total= (double)(@total + @pro.Price);*@
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <div>
+                                                        <h6 class="my-0">@pro.Name</h6>
+                                                        <small class="text-muted">Price  : @(@pro.Price.ToString("C"))</small>
+                                                    </div>
+                                                </li>
+                                            }
+                                            <hr />
+                                           @* <span class="text-right text-black-50">@(@total.ToString("C"))</span>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                              </div>
+                          </div>  
+                        </div>  
+                            
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-6 col-md-3 offset-md-6">
+                                    <button type="submit" class="btn btn-primary form-control">
+                                        <span>Submit Inquiry</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</form>

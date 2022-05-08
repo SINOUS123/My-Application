@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProjectVideo.Models.Category>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+
+
+
+<div class="card">
+	<div class="card-header">
+		<h1 class="text-info">List Category</h1>
+	</div>
+	<div class="card-body">
+			<p class="card-title">
+				<a class="btn btn-primary" asp-action="Create">Create New</a>
+			</p>
+		<div class="card-text">
+            <table class="table table-bordered table-responsive table-striped" style="width:100%">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.Name)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.DisplayOrder)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="col-md-12">
+					@foreach (var item in Model) {
+							<tr>
+								<td width="50%">
+									@Html.DisplayFor(modelItem => item.Name)
+								</td>
+								<td width="20%">
+									@Html.DisplayFor(modelItem => item.DisplayOrder)
+								</td>
+								<td width="30%">
+									<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+									<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+									<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+								</td>
+							</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+@*
+
+<div class="card">
+	<div class="card-header">
+		<h1>List Category</h1>
+	</div>
+	<div class="card-body">
+			<p class="card-title">
+				<a asp-action="Create">Create New</a>
+			</p>
+		<div class="card-text">
+
+		</div>
+	</div>
+</div>
+
+*@

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProjectVideo.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="UpSert">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>*@
+           @* <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.ApplicationId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       @if (Model.Count() > 0)
+       {
+             @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                       @((item.Price).ToString("c"))
+                    </td>
+                   @* <td>
+                        @item.Description
+                    </td>
+                    <td>
+                       <img class="img img-circle" style="width:70px;height:70;border-radius:50%;" src="@WC.ImagePath@item.Image">
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.ApplicationType.Name)
+                    </td>
+                    <td>
+                        <a asp-action="UpSert" asp-route-id="@item.Id">Edit</a> |
+                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5"><span class="text-danger text-center">No product found....</span></td>
+            </tr>
+        }
+    </tbody>
+</table>
